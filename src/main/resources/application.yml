@@ -1,0 +1,35 @@
+server:
+  port: 13001
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/api_vue?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: xiaojiejie520
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 59.110.228.130
+    port: 6379
+    password: xiaofeng
+    database: 0
+    jedis:
+      pool:
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+    timeout: 5000
+  session:
+    store-type: redis
+mybatis:
+  typeAliasesPackage: com.master.mybatis.entity
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true #支持下划线转驼峰
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

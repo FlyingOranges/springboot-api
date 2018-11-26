@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vue.api.mapper.UsersMapper">
+
+    <select id="loginUser" resultType="com.vue.api.entity.UsersEntity">
+        select `id`,`username`,`password`,`nickname`,`token`,`status` from `api_users`
+        <where>
+            `status` = 1 AND `username` = #{username}
+        </where>
+        LIMIT 1
+    </select>
+
+    <!--<select id="getGirls" resultType="com.master.mybatis.entity.GirlsImages">-->
+        <!--select `id`,`title`,`src`,`like`,`created_at`,`updated_at` FROM `girls_images`-->
+        <!--<where>-->
+            <!--`status` = 1-->
+            <!--<if test="title != null">-->
+                <!--AND `title` LIKE "%"#{title}"%"-->
+            <!--</if>-->
+        <!--</where>-->
+        <!--ORDER BY `created_at` DESC-->
+        <!--<if test="offset != null and limit != null">-->
+            <!--LIMIT ${offset}, ${limit}-->
+        <!--</if>-->
+    <!--</select>-->
+
+    <!--<insert id="addGirls" keyProperty="id" useGeneratedKeys="true"-->
+            <!--parameterType="com.master.mybatis.entity.GirlsImages">-->
+        <!--INSERT INTO `girls_images` (`title`,`src`,`like`,`created_at`,`updated_at`,`status`) VALUES-->
+        <!--(#{title},#{src},#{like},#{createdAt},#{updatedAt},#{status})-->
+    <!--</insert>-->
+
+    <!-- S 批量插入 -->
+    <!--<insert id="addGirlsList" keyProperty="id" useGeneratedKeys="true"-->
+            <!--parameterType="com.master.mybatis.entity.GirlsImages">-->
+        <!--INSERT INTO `girls_images` (`title`,`src`,`like`,`created_at`,`updated_at`,`status`) VALUES-->
+        <!--<foreach collection="items" item="item" index="index" separator=",">-->
+            <!--(#{item.title},#{item.src},#{item.like},#{item.createdAt},#{item.updatedAt},#{item.status})-->
+        <!--</foreach>-->
+    <!--</insert>-->
+    <!-- E 批量插入 -->
+
+    <!-- S 连接查询 -->
+    <!--<select id="findJoinGirls" resultType="com.master.mybatis.entity.GirlsImagesToContent">-->
+        <!--SELECT `a`.`id`,`a`.`title`,`a`.`src`,`a`.`like`,`b`.`content` FROM `girls_images` as `a`,`girls_images_content`-->
+        <!--as `b`-->
+        <!--<where>-->
+            <!--`a`.`id` = `b`.`images_id` AND `a`.`id` = #{id}-->
+        <!--</where>-->
+        <!--LIMIT 1-->
+    <!--</select>-->
+
+    <!--<select id="getJoinGirls" resultType="com.master.mybatis.entity.GirlsImagesToContent">-->
+        <!--SELECT `a`.`id`,`a`.`title`,`a`.`src`,`a`.`like`,`b`.`content` FROM `girls_images` as `a`,`girls_images_content`-->
+        <!--as `b` WHERE `a`.`id` = `b`.`images_id`-->
+        <!--<if test="offset != null and limit != null">-->
+            <!--LIMIT ${offset}, ${limit}-->
+        <!--</if>-->
+    <!--</select>-->
+    <!-- E 连接查询 -->
+
+    <!--<update id="likeAction" parameterType="com.master.mybatis.entity.GirlsImages">-->
+        <!--UPDATE `girls_images` SET `like` = `like` + 1,`updated_at` = #{updatedAt} WHERE `id` = #{id}-->
+    <!--</update>-->
+
+    <!--<delete id="delUserInfo" parameterType="java.lang.Integer">-->
+    <!--delete from user where id = #{id,jdbcType=INTEGER}-->
+    <!--</delete>-->
+
+</mapper>
