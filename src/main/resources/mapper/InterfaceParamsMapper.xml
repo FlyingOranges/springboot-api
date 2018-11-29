@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vue.api.mapper.InterfaceParamsMapper">
+
+    <!-- S 批量插入 -->
+    <insert id="createParamsList" keyProperty="id" useGeneratedKeys="true"
+            parameterType="com.vue.api.entity.InterfaceParamsEntity">
+        INSERT INTO `api_interface_params` (`interface_id`,`params_name`,`params_type`,
+        `params_necessary`,`params_explain`,`created_at`,`updated_at`,`status`) VALUES
+
+        <foreach collection="interfaceParamsEntityList" item="item" index="index" separator=",">
+            (#{item.interfaceId},#{item.paramsName},#{item.paramsType},#{item.paramsNecessary},
+            #{item.createdAt},#{item.updatedAt},#{item.status})
+        </foreach>
+    </insert>
+    <!-- E 批量插入 -->
+
+    <!-- S 批量插入 -->
+    <insert id="createData" keyProperty="id" useGeneratedKeys="true"
+            parameterType="com.vue.api.entity.InterfaceParamsEntity">
+        INSERT INTO `api_interface_params` (`interface_id`,`params_name`,`params_type`,
+        `params_necessary`,`params_explain`,`created_at`,`updated_at`,`status`) VALUES
+            (#{interfaceId},#{paramsName},#{paramsType},#{paramsNecessary},
+            #{createdAt},#{updatedAt},#{status})
+    </insert>
+    <!-- E 批量插入 -->
+
+    <!--<select id="getList" resultType="com.vue.api.entity.ProjectEntity">-->
+    <!--SELECT `id`,`name`,`info` FROM `api_project`-->
+    <!--<where>-->
+    <!--`status` = #{status}-->
+    <!--<if test="userId != null">-->
+    <!--AND `user_id` = #{userId}-->
+    <!--</if>-->
+    <!--ORDER BY `created_at` DESC-->
+    <!--</where>-->
+    <!--</select>-->
+
+    <!--<select id="getGirls" resultType="com.master.mybatis.entity.GirlsImages">-->
+    <!--select `id`,`title`,`src`,`like`,`created_at`,`updated_at` FROM `girls_images`-->
+    <!--<where>-->
+    <!--`status` = 1-->
+    <!--<if test="title != null">-->
+    <!--AND `title` LIKE "%"#{title}"%"-->
+    <!--</if>-->
+    <!--</where>-->
+    <!--ORDER BY `created_at` DESC-->
+    <!--<if test="offset != null and limit != null">-->
+    <!--LIMIT ${offset}, ${limit}-->
+    <!--</if>-->
+    <!--</select>-->
+
+
+    <!--<update id="likeAction" parameterType="com.master.mybatis.entity.GirlsImages">-->
+    <!--UPDATE `girls_images` SET `like` = `like` + 1,`updated_at` = #{updatedAt} WHERE `id` = #{id}-->
+    <!--</update>-->
+
+    <!--<delete id="delUserInfo" parameterType="java.lang.Integer">-->
+    <!--delete from user where id = #{id,jdbcType=INTEGER}-->
+    <!--</delete>-->
+
+</mapper>
