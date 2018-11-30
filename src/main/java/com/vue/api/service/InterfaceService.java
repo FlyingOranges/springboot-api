@@ -15,4 +15,7 @@ public interface InterfaceService {
 
     InterfaceEntity getInfo(Map<String, Object> params);
 
+    Integer saveInterface(HashMap<String, Object> params);
+
+    Integer deleteInterface(Integer id);
 }

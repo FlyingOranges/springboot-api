@@ -52,4 +52,36 @@ public class InterfaceServiceImpl implements InterfaceService {
     public InterfaceEntity getInfo(Map<String, Object> params) {
         return interfaceMapper.getInfoInterface(params);
     }
+
+    @Override
+    public Integer saveInterface(HashMap<String, Object> params) {
+        InterfaceEntity interfaceEntity = new InterfaceEntity();
+
+        interfaceEntity.setId(Integer.parseInt(params.get("id").toString()));
+        interfaceEntity.setInterfaceName(params.get("interface_name").toString());
+        interfaceEntity.setInterfaceUse(params.get("interface_use").toString());
+        interfaceEntity.setInterfaceType(Integer.parseInt(params.get("interface_type").toString()));
+        interfaceEntity.setInterfaceUrl(params.get("interface_url").toString());
+        interfaceEntity.setInterfaceJson(params.get("interface_json").toString());
+        interfaceEntity.setInterfaceNote(params.get("interface_note").toString());
+
+        String interfaceParams = params.get("interface_params").toString();
+        if (interfaceParams != null) {
+            interfaceEntity.setInterfaceParams(interfaceParams);
+        }
+
+        interfaceEntity.setUpdatedAt(TimeUtils.getTimestamp());
+        interfaceEntity.setStatus(1);
+
+        return interfaceMapper.saveInterface(interfaceEntity);
+    }
+
+    @Override
+    public Integer deleteInterface(Integer id) {
+        InterfaceEntity interfaceEntity = new InterfaceEntity();
+        interfaceEntity.setId(id);
+
+
+        return null;
+    }
 }

@@ -45,5 +45,16 @@ public class InterfaceController {
     public ApiResponse info(@RequestParam Map<String, Object> params) {
         return HttpUtils.apiSuccess("success", interfaceService.getInfo(params));
     }
+
+    @PostMapping(value = "/edit")
+    public ApiResponse edit(@RequestParam HashMap<String, Object> params) {
+        return HttpUtils.apiSuccess("编辑成功", interfaceService.saveInterface(params));
+    }
+
+    @PostMapping(value = "/delete")
+    public ApiResponse delete(@RequestParam(name = "id") Integer id) {
+
+        return HttpUtils.apiSuccess("success");
+    }
 }
 

@@ -16,4 +16,6 @@ public interface InterfaceMapper {
     List<InterfaceEntity> getListInterface(Map<String, Object> interfaceEntity);
 
     InterfaceEntity getInfoInterface(Map<String, Object> interfaceEntity);
+
+    Integer saveInterface(InterfaceEntity interfaceEntity);
 }

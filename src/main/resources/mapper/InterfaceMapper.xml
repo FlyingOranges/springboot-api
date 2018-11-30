@@ -33,6 +33,13 @@
             LIMIT 1
     </select>
 
+    <update id="saveInterface" parameterType="com.vue.api.entity.InterfaceEntity">
+        UPDATE `api_interface` SET `interface_name` = #{interfaceName},`interface_use` = #{interfaceUse},
+        `interface_type` = #{interfaceType},`interface_url` = #{interfaceUrl},`interface_params` = #{interfaceParams},
+        `interface_json` = #{interfaceJson},`interface_note`=#{interfaceNote},`updated_at`=#{updatedAt}
+         WHERE `id` = #{id}
+    </update>
+
     <!--<select id="getGirls" resultType="com.master.mybatis.entity.GirlsImages">-->
     <!--select `id`,`title`,`src`,`like`,`created_at`,`updated_at` FROM `girls_images`-->
     <!--<where>-->
@@ -57,9 +64,7 @@
     <!--</insert>-->
     <!-- E 批量插入 -->
 
-    <!--<update id="likeAction" parameterType="com.master.mybatis.entity.GirlsImages">-->
-    <!--UPDATE `girls_images` SET `like` = `like` + 1,`updated_at` = #{updatedAt} WHERE `id` = #{id}-->
-    <!--</update>-->
+
 
     <!--<delete id="delUserInfo" parameterType="java.lang.Integer">-->
     <!--delete from user where id = #{id,jdbcType=INTEGER}-->
