@@ -23,6 +23,8 @@ public class InterfaceEntity implements Serializable {
 
     private String interfaceUrl;
 
+    private String interfaceParams;
+
     private String interfaceJson;
 
     private String interfaceNote;
@@ -82,6 +84,14 @@ public class InterfaceEntity implements Serializable {
 
     public void setInterfaceUrl(String interfaceUrl) {
         this.interfaceUrl = interfaceUrl;
+    }
+
+    public String getInterfaceParams() {
+        return interfaceParams;
+    }
+
+    public void setInterfaceParams(String interfaceParams) {
+        this.interfaceParams = interfaceParams;
     }
 
     public String getInterfaceJson() {

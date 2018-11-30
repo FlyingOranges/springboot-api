@@ -25,44 +25,21 @@
 
 DROP TABLE IF EXISTS `api_interface`;
 
-CREATE TABLE `api_interface` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `interface_project_id` int(11) NOT NULL COMMENT '外键，项目id',
-  `interface_name` varchar(20) NOT NULL COMMENT '接口名称',
-  `interface_use` varchar(50) NOT NULL COMMENT '接口用途',
-  `interface_type` int(1) DEFAULT '1' COMMENT '请求方式',
-  `interface_url` varchar(255) NOT NULL COMMENT '接口地址',
-  `interface_json` text NOT NULL COMMENT '接口返回结果(json字符串)',
-  `interface_note` varchar(255) DEFAULT NULL COMMENT '接口备注',
+create table `api_interface`(
+  `id` int primary key auto_increment,
+  `interface_project_id` int not null comment '外键，项目id',
+  `interface_name` varchar(20) not null comment '接口名称',
+  `interface_use` varchar(50) not null comment '接口用途',
+  `interface_type` int(1) default 1 comment '请求方式',
+  `interface_url` varchar(255) not null comment '接口地址',
+  `interface_params` text default null comment '接口参数(json)字符串',
+  `interface_json` text not null comment '接口返回结果(json字符串)',
+  `interface_note` varchar(255) comment '接口备注',
   `created_at` mediumtext,
   `updated_at` mediumtext,
-  `status` int(1) DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `interface_project_id` (`interface_project_id`),
-  CONSTRAINT `api_interface_ibfk_1` FOREIGN KEY (`interface_project_id`) REFERENCES `api_project` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接口表';
-
-
-
-# Dump of table api_interface_params
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `api_interface_params`;
-
-CREATE TABLE `api_interface_params` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `interface_id` int(11) NOT NULL COMMENT '外键,接口表id',
-  `params_name` varchar(20) NOT NULL COMMENT '参数名称',
-  `params_type` int(2) NOT NULL DEFAULT '1' COMMENT '参数类型',
-  `params_necessary` int(1) DEFAULT '1' COMMENT '是否必要 1必要 0非必要',
-  `params_explain` varchar(50) DEFAULT NULL COMMENT '参数解释',
-  `created_at` mediumtext,
-  `updated_at` mediumtext,
-  `status` int(1) DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `api_interface_params` (`interface_id`),
-  CONSTRAINT `api_interface_params_ibfk_1` FOREIGN KEY (`interface_id`) REFERENCES `api_interface` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接口参数表';
+  `status` int(1) default 1,
+  foreign key (`interface_project_id`) references `api_project`(`id`)
+)comment = '接口表';
 
 
 

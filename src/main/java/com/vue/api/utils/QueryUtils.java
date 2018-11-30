@@ -22,7 +22,7 @@ public class QueryUtils extends LinkedHashMap<String, Object> {
         }
 
         if (!params.containsKey("limit")) {
-            params.put("limit", 2);
+            params.put("limit", 10);
         }
 
         this.putAll(params);
