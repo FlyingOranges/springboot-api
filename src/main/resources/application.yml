@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/api_vue?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://59.110.228.130:3306/api_vue?useUnicode=true&characterEncoding=utf8
     username: root
-    password: xiaojiejie520
+    password: 65331413
   jpa:
     hibernate:
       ddl-auto: none
@@ -28,7 +28,7 @@ spring:
   session:
     store-type: redis
 mybatis:
-  typeAliasesPackage: com.master.mybatis.entity
+  typeAliasesPackage: com.vue.api.entity
   mapperLocations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true #支持下划线转驼峰

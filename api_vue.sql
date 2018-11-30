@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ************************************************************
 # Sequel Pro SQL dump
 # Version 4541
@@ -68,6 +69,25 @@ CREATE TABLE `api_interface_params` (
 
 # Dump of table api_project
 # ------------------------------------------------------------
+=======
+DROP TABLE IF EXISTS `api_interface`;
+
+create table `api_interface`(
+  `id` int primary key auto_increment,
+  `interface_project_id` int not null comment '外键，项目id',
+  `interface_name` varchar(20) not null comment '接口名称',
+  `interface_use` varchar(50) not null comment '接口用途',
+  `interface_type` int(1) default 1 comment '请求方式',
+  `interface_url` varchar(255) not null comment '接口地址',
+  `interface_params` text default null comment '接口参数(json)字符串',
+  `interface_json` text not null comment '接口返回结果(json字符串)',
+  `interface_note` varchar(255) comment '接口备注',
+  `created_at` mediumtext,
+  `updated_at` mediumtext,
+  `status` int(1) default 1,
+  foreign key (`interface_project_id`) references `api_project`(`id`)
+)comment = '接口表';
+>>>>>>> project
 
 DROP TABLE IF EXISTS `api_project`;
 
@@ -84,9 +104,12 @@ CREATE TABLE `api_project` (
   CONSTRAINT `api_project_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `api_users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='项目信息表';
 
+<<<<<<< HEAD
 LOCK TABLES `api_project` WRITE;
 /*!40000 ALTER TABLE `api_project` DISABLE KEYS */;
 
+=======
+>>>>>>> project
 INSERT INTO `api_project` (`id`, `name`, `info`, `user_id`, `created_at`, `updated_at`, `status`)
 VALUES
 	(1,'1321312321','hahahahha',1,'1543200283141','1543200283141',1),
@@ -99,6 +122,7 @@ VALUES
 	(8,'ali','alililili',1,'1543201095175','1543201095175',1),
 	(9,'fafdsa','fdsafdsafdsa',1,'1543279925504','1543279925504',1);
 
+<<<<<<< HEAD
 /*!40000 ALTER TABLE `api_project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,6 +130,8 @@ UNLOCK TABLES;
 # Dump of table api_users
 # ------------------------------------------------------------
 
+=======
+>>>>>>> project
 DROP TABLE IF EXISTS `api_users`;
 
 CREATE TABLE `api_users` (
@@ -126,6 +152,7 @@ LOCK TABLES `api_users` WRITE;
 INSERT INTO `api_users` (`id`, `username`, `password`, `nickname`, `token`, `created_at`, `updated_at`, `status`)
 VALUES
 	(1,'aileshang0226@163.com','846e6e9c4e43735ca04c6af632ce565e','jack','59c9672dc5abd181f2aa650ca62c94c8',NULL,NULL,1);
+<<<<<<< HEAD
 
 /*!40000 ALTER TABLE `api_users` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -138,3 +165,5 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+=======
+>>>>>>> project

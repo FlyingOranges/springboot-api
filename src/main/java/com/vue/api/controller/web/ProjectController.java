@@ -4,10 +4,8 @@ import com.vue.api.entity.ProjectEntity;
 import com.vue.api.entity.UsersEntity;
 import com.vue.api.service.ProjectService;
 import com.vue.api.utils.HttpUtils;
-import com.vue.api.utils.QueryUtils;
 import com.vue.api.utils.UsersUtils;
 import com.vue.api.utilsPackages.ApiResponse;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "project")

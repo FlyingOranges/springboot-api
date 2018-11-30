@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vue.api.mapper.InterfaceMapper">
+
+    <insert id="createInterface" keyProperty="id" useGeneratedKeys="true"
+            parameterType="com.vue.api.entity.InterfaceEntity">
+        INSERT INTO `api_interface` (`interface_project_id`,`interface_name`,`interface_use`,`interface_type`,
+        `interface_url`,`interface_params`,`interface_json`,`interface_note`,`created_at`,`updated_at`,`status`) VALUES
+        (#{interfaceProjectId},#{interfaceName},#{interfaceUse},#{interfaceType},#{interfaceUrl},#{interfaceParams},
+        #{interfaceJson},#{interfaceNote},#{createdAt},#{updatedAt},#{status})
+    </insert>
+
+    <select id="getListInterface" resultType="com.vue.api.entity.InterfaceEntity">
+        SELECT `id`,`interface_name`,`interface_use`,`interface_type` FROM `api_interface`
+        <where>
+            `status` = 1 AND `interface_project_id` = #{project_id}
+            <if test="search != null">
+                AND `interface_name` LIKE CONCAT('%',#{search},'%')
+            </if>
+            ORDER BY `updated_at` DESC
+        </where>
+        <if test="offset != null and limit != null">
+            LIMIT ${offset}, ${limit}
+        </if>
+    </select>
+
+    <select id="getInfoInterface" resultType="com.vue.api.entity.InterfaceEntity">
+        SELECT `id`,`interface_name`,`interface_use`,`interface_type`,`interface_url`,`interface_params`,
+        `interface_json`,`interface_note` FROM `api_interface`
+        <where>
+            `status` = 1 AND `id` = #{id}
+        </where>
+            LIMIT 1
+    </select>
+
+    <update id="saveInterface" parameterType="com.vue.api.entity.InterfaceEntity">
+        UPDATE `api_interface` SET `interface_name` = #{interfaceName},`interface_use` = #{interfaceUse},
+        `interface_type` = #{interfaceType},`interface_url` = #{interfaceUrl},`interface_params` = #{interfaceParams},
+        `interface_json` = #{interfaceJson},`interface_note`=#{interfaceNote},`updated_at`=#{updatedAt}
+         WHERE `id` = #{id}
+    </update>
+
+    <update id="deleteInterface" parameterType="com.vue.api.entity.InterfaceEntity">
+        UPDATE `api_interface` SET `status` = 0 WHERE `id` = #{id}
+    </update>
+
+    <!--<select id="getGirls" resultType="com.master.mybatis.entity.GirlsImages">-->
+    <!--select `id`,`title`,`src`,`like`,`created_at`,`updated_at` FROM `girls_images`-->
+    <!--<where>-->
+    <!--`status` = 1-->
+    <!--<if test="title != null">-->
+    <!--AND `title` LIKE "%"#{title}"%"-->
+    <!--</if>-->
+    <!--</where>-->
+    <!--ORDER BY `created_at` DESC-->
+    <!--<if test="offset != null and limit != null">-->
+    <!--LIMIT ${offset}, ${limit}-->
+    <!--</if>-->
+    <!--</select>-->
+
+    <!-- S 批量插入 -->
+    <!--<insert id="addGirlsList" keyProperty="id" useGeneratedKeys="true"-->
+    <!--parameterType="com.master.mybatis.entity.GirlsImages">-->
+    <!--INSERT INTO `girls_images` (`title`,`src`,`like`,`created_at`,`updated_at`,`status`) VALUES-->
+    <!--<foreach collection="items" item="item" index="index" separator=",">-->
+    <!--(#{item.title},#{item.src},#{item.like},#{item.createdAt},#{item.updatedAt},#{item.status})-->
+    <!--</foreach>-->
+    <!--</insert>-->
+    <!-- E 批量插入 -->
+
+
+
+    <!--<delete id="delUserInfo" parameterType="java.lang.Integer">-->
+    <!--delete from user where id = #{id,jdbcType=INTEGER}-->
+    <!--</delete>-->
+
+</mapper>
