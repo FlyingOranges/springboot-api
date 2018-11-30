@@ -3,11 +3,14 @@ package com.vue.api.service.impl;
 import com.vue.api.entity.InterfaceEntity;
 import com.vue.api.mapper.InterfaceMapper;
 import com.vue.api.service.InterfaceService;
+import com.vue.api.utils.QueryUtils;
 import com.vue.api.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service(value = "InterfaceService")
 public class InterfaceServiceImpl implements InterfaceService {
@@ -37,5 +40,16 @@ public class InterfaceServiceImpl implements InterfaceService {
         interfaceEntity.setStatus(1);
 
         return interfaceMapper.createInterface(interfaceEntity);
+    }
+
+    @Override
+    public List<InterfaceEntity> getList(Map<String, Object> params) {
+//        QueryUtils query = new QueryUtils(params);
+        return interfaceMapper.getListInterface(params);
+    }
+
+    @Override
+    public InterfaceEntity getInfo(Map<String, Object> params) {
+        return interfaceMapper.getInfoInterface(params);
     }
 }
