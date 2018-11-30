@@ -5,20 +5,20 @@
     <insert id="createInterface" keyProperty="id" useGeneratedKeys="true"
             parameterType="com.vue.api.entity.InterfaceEntity">
         INSERT INTO `api_interface` (`interface_project_id`,`interface_name`,`interface_use`,`interface_type`,
-        `interface_url`,`interface_json`,`interface_note`,`created_at`,`updated_at`,`status`) VALUES
-        (#{interfaceProjectId},#{interfaceName},#{interfaceUse},#{interfaceType},#{interfaceUrl},#{interfaceJson},
-        #{interfaceNote},#{createdAt},#{updatedAt},#{status})
+        `interface_url`,`interface_params`,`interface_json`,`interface_note`,`created_at`,`updated_at`,`status`) VALUES
+        (#{interfaceProjectId},#{interfaceName},#{interfaceUse},#{interfaceType},#{interfaceUrl},#{interfaceParams},
+        #{interfaceJson},#{interfaceNote},#{createdAt},#{updatedAt},#{status})
     </insert>
 
     <!--<select id="getList" resultType="com.vue.api.entity.ProjectEntity">-->
-        <!--SELECT `id`,`name`,`info` FROM `api_project`-->
-        <!--<where>-->
-            <!--`status` = #{status}-->
-            <!--<if test="userId != null">-->
-                <!--AND `user_id` = #{userId}-->
-            <!--</if>-->
-            <!--ORDER BY `created_at` DESC-->
-        <!--</where>-->
+    <!--SELECT `id`,`name`,`info` FROM `api_project`-->
+    <!--<where>-->
+    <!--`status` = #{status}-->
+    <!--<if test="userId != null">-->
+    <!--AND `user_id` = #{userId}-->
+    <!--</if>-->
+    <!--ORDER BY `created_at` DESC-->
+    <!--</where>-->
     <!--</select>-->
 
     <!--<select id="getGirls" resultType="com.master.mybatis.entity.GirlsImages">-->
