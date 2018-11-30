@@ -18,4 +18,6 @@ public interface InterfaceMapper {
     InterfaceEntity getInfoInterface(Map<String, Object> interfaceEntity);
 
     Integer saveInterface(InterfaceEntity interfaceEntity);
+
+    Integer deleteInterface(InterfaceEntity interfaceEntity);
 }

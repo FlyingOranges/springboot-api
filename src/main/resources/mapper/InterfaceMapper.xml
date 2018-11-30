@@ -40,6 +40,10 @@
          WHERE `id` = #{id}
     </update>
 
+    <update id="deleteInterface" parameterType="com.vue.api.entity.InterfaceEntity">
+        UPDATE `api_interface` SET `status` = 0 WHERE `id` = #{id}
+    </update>
+
     <!--<select id="getGirls" resultType="com.master.mybatis.entity.GirlsImages">-->
     <!--select `id`,`title`,`src`,`like`,`created_at`,`updated_at` FROM `girls_images`-->
     <!--<where>-->

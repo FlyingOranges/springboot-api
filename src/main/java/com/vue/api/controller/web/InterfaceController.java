@@ -53,8 +53,7 @@ public class InterfaceController {
 
     @PostMapping(value = "/delete")
     public ApiResponse delete(@RequestParam(name = "id") Integer id) {
-
-        return HttpUtils.apiSuccess("success");
+        return HttpUtils.apiSuccess("success",interfaceService.deleteInterface(id));
     }
 }
 

@@ -81,7 +81,6 @@ public class InterfaceServiceImpl implements InterfaceService {
         InterfaceEntity interfaceEntity = new InterfaceEntity();
         interfaceEntity.setId(id);
 
-
-        return null;
+        return interfaceMapper.deleteInterface(interfaceEntity);
     }
 }
