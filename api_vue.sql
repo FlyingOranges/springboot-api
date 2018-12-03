@@ -57,9 +57,6 @@ CREATE TABLE `api_users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 
-LOCK TABLES `api_users` WRITE;
-/*!40000 ALTER TABLE `api_users` DISABLE KEYS */;
-
 INSERT INTO `api_users` (`id`, `username`, `password`, `nickname`, `token`, `created_at`, `updated_at`, `status`)
 VALUES
 	(1,'aileshang0226@163.com','846e6e9c4e43735ca04c6af632ce565e','jack','59c9672dc5abd181f2aa650ca62c94c8',NULL,NULL,1);
